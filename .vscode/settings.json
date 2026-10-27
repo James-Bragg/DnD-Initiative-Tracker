@@ -1,5 +1,8 @@
 {
-    "cSpell.words": [
-        "gameplay"
-    ]
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.webmanifest": "json"
+  },
+  "cSpell.words": ["Assister", "gameplay", "pluralise"]
 }

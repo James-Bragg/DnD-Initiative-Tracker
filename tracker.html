@@ -1,80 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Manage your Dungeons & Dragons initiative order and other game aspects easily with the D&D Tool Assister.">
-    <meta name="keywords" content="D&D, Dungeons and Dragons, Initiative Tracker, Tabletop, Role-playing game">
-    <title>D&D Tool Assister - Initiative Tracker</title>
-    <link rel="stylesheet" href="styles.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Manage your Dungeons &amp; Dragons initiative order easily with the D&amp;D Tool Assister."
+        />
+        <meta name="theme-color" content="#1a1a1a" />
+        <title>Initiative Tracker | D&amp;D Tool Assister</title>
+        <link rel="icon" href="favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="scripts.js" defer></script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="nav-left">
-                <h1><a href="index.html">D&D Tool Assister</a></h1>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle Navigation">
-                <span></span>
-            </button>
-            <ul class="nav-right">
-                <li><a href="tracker.html">Initiative Tracker</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-container">
-        <section class="left-box session-players-section" aria-labelledby="session-players-heading">
-            <h2 id="session-players-heading">Session Players</h2>
-            <form id="addPlayerForm" class="add-player-form" aria-label="Add New Player Form">
-                <input type="text" name="name" placeholder="Enter player name" aria-label="Player Name" title="Enter the name of the player to add them to the session">
-                <input type="number" name="bonus" placeholder="+bonus" title="Optional initiative bonus">
-                <input type="submit" value="Add Player" title="Click to add the player to the session">
-            </form>
-            <div class="list-box">
-                <ul id="sessionPlayersList" aria-live="polite">
-                    <!-- Session player list will be handled by JavaScript -->
+        <header class="site-header">
+            <nav class="nav container" aria-label="Main">
+                <a class="nav__brand" href="index.html">D&amp;D Tool Assister</a>
+                <button
+                    class="nav__toggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-controls="navMenu"
+                    aria-expanded="false"
+                >
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+                <ul class="nav__menu" id="navMenu">
+                    <li><a class="nav__link" href="index.html">Home</a></li>
+                    <li>
+                        <a class="nav__link" href="tracker.html" aria-current="page">
+                            Initiative Tracker
+                        </a>
+                    </li>
+                    <li><a class="nav__link" href="about.html">About</a></li>
                 </ul>
-            </div>
-            <div class="session-controls">
-                <button id="clearSessionBtn" aria-label="Clear Session" title="Clear all players and initiative rolls from the session">Clear Session</button>
-                <button id="removeFromSessionBtn" aria-label="Remove Selected Players" title="Remove selected players from the session">Remove Selected</button>
-            </div>
-        </section>
-        <section class="right-box initiative-rolls-section" aria-labelledby="initiative-rolls-heading">
-            <h2 id="initiative-rolls-heading">Initiative Rolls</h2>
-            <div class="initiative-rolls-container">  
-            <form id="initiativeForm" aria-label="Initiative Rolls Form">
-                <ul id="initiativeEntries" aria-live="polite">
-                    <!-- Initiative entries will be handled by JavaScript -->
-                </ul>
-                <div class ="roll-controls">
-                    <button type="button" id="rollInitiativeBtn" aria-label="Roll Initiative" title="Roll initiative for all players">Roll Initiative</button>
-                    <button type="button" id="clearInitiativeBtn" aria-label="Clear Initiative Rolls" title="Clear all initiative rolls">Clear Rolls</button>
+            </nav>
+        </header>
+
+        <main class="site-main container" id="main">
+            <header class="page-header">
+                <h1>Initiative Tracker</h1>
+                <p>Add your combatants, enter their rolls, then step through the turn order.</p>
+            </header>
+
+            <div class="tracker-layout" id="tracker">
+                <div class="tracker-layout__setup">
+                    <!-- Session players -->
+                    <section class="panel" aria-labelledby="players-heading">
+                        <div class="panel__header">
+                            <h2 class="panel__title" id="players-heading">Session Players</h2>
+                            <span class="badge" id="playerCount">0 players</span>
+                        </div>
+
+                        <form class="form-row" id="addPlayerForm" novalidate>
+                            <label class="visually-hidden" for="playerNameInput">Player name</label>
+                            <input
+                                class="input"
+                                id="playerNameInput"
+                                name="name"
+                                type="text"
+                                placeholder="Player name"
+                                maxlength="40"
+                                autocomplete="off"
+                                required
+                            />
+                            <label class="visually-hidden" for="playerBonusInput">
+                                Initiative bonus
+                            </label>
+                            <input
+                                class="input input--narrow"
+                                id="playerBonusInput"
+                                name="bonus"
+                                type="number"
+                                inputmode="numeric"
+                                placeholder="+0"
+                                step="1"
+                            />
+                            <button class="btn" type="submit">Add</button>
+                        </form>
+                        <p class="panel__message" id="playersMessage" role="status"></p>
+
+                        <p class="panel__hint" id="playersHint">
+                            Select players to remove them from the session.
+                        </p>
+                        <ul class="player-list" id="playerList"></ul>
+                        <p class="empty-state" id="playersEmpty" hidden>
+                            No players yet. Add one above or reset to the default party.
+                        </p>
+
+                        <div class="panel__actions">
+                            <button class="btn btn--ghost" id="removeSelectedBtn" type="button">
+                                Remove Selected
+                            </button>
+                            <button class="btn btn--ghost" id="resetDefaultsBtn" type="button">
+                                Reset to Defaults
+                            </button>
+                            <button class="btn btn--danger" id="clearSessionBtn" type="button">
+                                Clear Session
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Initiative rolls -->
+                    <section class="panel" aria-labelledby="rolls-heading">
+                        <div class="panel__header">
+                            <h2 class="panel__title" id="rolls-heading">Initiative Rolls</h2>
+                        </div>
+
+                        <div class="roll-row roll-row--head" id="rollsHead" aria-hidden="true">
+                            <span>Player</span>
+                            <span>d20</span>
+                            <span>Bonus</span>
+                            <span>Total</span>
+                        </div>
+                        <ul class="roll-list" id="rollList"></ul>
+                        <p class="empty-state" id="rollsEmpty" hidden>
+                            Add players to start entering initiative rolls.
+                        </p>
+                        <p class="panel__message" id="rollsMessage" role="status"></p>
+
+                        <div class="panel__actions">
+                            <button class="btn btn--primary" id="startCombatBtn" type="button">
+                                Start Combat
+                            </button>
+                            <button class="btn btn--ghost" id="rollBlanksBtn" type="button">
+                                Roll Blanks
+                            </button>
+                            <button class="btn btn--ghost" id="clearRollsBtn" type="button">
+                                Clear Rolls
+                            </button>
+                        </div>
+                    </section>
                 </div>
-            </form>
-            </div>
-        </section>
-        <section class="right-box initiative-order-section" aria-labelledby="initiative-order-heading">
-            <h2 id="initiative-order-heading">Initiative Order</h2>
-            <div id="initiativeOrder" class="card-container">
-                <!-- Initiative order will be handled by JavaScript -->
-            </div>
-            <div class="navigation">
-                <button id="prevTurnBtn" aria-label="Previous Turn">Previous Turn</button>
-                <button id="nextTurnBtn" aria-label="Next Turn">Next Turn</button>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 D&D Tool Assister. All rights reserved.</p>
-    </footer>
 
-    <script src="scripts.js" defer></script>
-</body>
+                <!-- Initiative order -->
+                <section class="panel tracker-layout__order" aria-labelledby="order-heading">
+                    <div class="panel__header">
+                        <h2 class="panel__title" id="order-heading">Initiative Order</h2>
+                        <span class="badge" id="roundBadge" hidden>Round 1</span>
+                    </div>
+
+                    <p class="turn-status" id="turnStatus" aria-live="polite"></p>
+                    <ol class="turn-order" id="turnOrder"></ol>
+                    <p class="empty-state" id="orderEmpty" hidden>
+                        Enter initiative rolls and press <strong>Start Combat</strong>.
+                    </p>
+
+                    <div class="panel__actions">
+                        <button class="btn btn--ghost" id="prevTurnBtn" type="button">
+                            Previous Turn
+                        </button>
+                        <button class="btn btn--primary" id="nextTurnBtn" type="button">
+                            Next Turn
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2024 D&amp;D Tool Assister. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
 </html>

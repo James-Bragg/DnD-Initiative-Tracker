@@ -1,47 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about the D&D Tool Assister, an essential tool for managing initiative order and other aspects in your Dungeons & Dragons games.">
-    <meta name="keywords" content="D&D, Dungeons and Dragons, Initiative Tracker, Tabletop, Role-playing game">
-    <title>About - D&D Tool Assister</title>
-    <link rel="stylesheet" href="styles.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Learn more about the D&amp;D Tool Assister, an essential tool for managing initiative order and other aspects of your Dungeons &amp; Dragons games."
+        />
+        <meta name="theme-color" content="#1a1a1a" />
+        <title>About | D&amp;D Tool Assister</title>
+        <link rel="icon" href="favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="scripts.js" defer></script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="nav-left">
-                <h1><a href="index.html">D&D Tool Assister</a></h1>
+        <header class="site-header">
+            <nav class="nav container" aria-label="Main">
+                <a class="nav__brand" href="index.html">D&amp;D Tool Assister</a>
+                <button
+                    class="nav__toggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-controls="navMenu"
+                    aria-expanded="false"
+                >
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+                <ul class="nav__menu" id="navMenu">
+                    <li><a class="nav__link" href="index.html">Home</a></li>
+                    <li><a class="nav__link" href="tracker.html">Initiative Tracker</a></li>
+                    <li><a class="nav__link" href="about.html" aria-current="page">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="site-main container" id="main">
+            <article class="panel prose">
+                <h1>About the D&amp;D Tool Assister</h1>
+                <p>
+                    This tool helps Dungeon Masters and players manage initiative order during
+                    Dungeons &amp; Dragons sessions. By tracking turns and making sure everyone acts
+                    in the correct sequence, it streamlines combat and reduces confusion at the
+                    table.
+                </p>
+                <p>
+                    It is built to be flexible, so you can adapt it to your campaign. Stay focused
+                    on storytelling while the tracker handles the details of combat order.
+                </p>
+
+                <h2>How to use the tracker</h2>
+                <ol>
+                    <li>
+                        <strong>Add players.</strong> Enter each combatant's name and optional
+                        initiative bonus under <em>Session Players</em>.
+                    </li>
+                    <li>
+                        <strong>Enter rolls.</strong> Type each d20 roll into
+                        <em>Initiative Rolls</em>, or use <em>Roll Blanks</em> to roll for anyone
+                        without a value.
+                    </li>
+                    <li>
+                        <strong>Start combat.</strong> The tracker sorts everyone by total. Tied
+                        totals share a turn.
+                    </li>
+                    <li>
+                        <strong>Run the turns.</strong> Use <em>Next Turn</em> and
+                        <em>Previous Turn</em> to move through the order. The round counter goes up
+                        each time the order wraps around.
+                    </li>
+                </ol>
+
+                <h2>Your data</h2>
+                <p>
+                    Players, bonuses, rolls and the current turn are saved in your browser, so a
+                    page refresh will not lose your place. Nothing is sent to a server.
+                </p>
+
+                <p><a class="btn btn--primary" href="tracker.html">Open the Tracker</a></p>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2024 D&amp;D Tool Assister. All rights reserved.</p>
             </div>
-            <button class="nav-toggle" aria-label="Toggle Navigation">
-                <span></span>
-            </button>
-            <ul class="nav-right">
-                <li><a href="tracker.html">Initiative Tracker</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="about-container">
-        <section class="about-box" aria-labelledby="about-heading">
-            <h2 id="about-heading">About the D&D Tool Assister</h2>
-            <p>This tool is designed to help Dungeon Masters and players manage the initiative order and other game aspects during their Dungeons & Dragons sessions. 
-            By tracking turns and ensuring everyone acts in the correct sequence, it streamlines gameplay and reduces confusion.</p>
-            <p>Our tool is easy to use and customizable, making it a valuable addition to any D&D game.</p>
-            <p>Whether you are a seasoned Dungeon Master or new to the role, this tool provides a seamless experience to manage combat scenarios and more. 
-            It's designed with flexibility in mind, allowing you to adapt it to different campaign needs. Stay focused on storytelling while we handle the details of combat order and other tasks.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 D&D Tool Assister. All rights reserved.</p>
-    </footer>
-    <script src="scripts.js"></script>
-</body>
+        </footer>
+    </body>
 </html>

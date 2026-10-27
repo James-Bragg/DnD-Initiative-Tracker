@@ -1,45 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to the D&D Tool Assister, your one-stop solution for managing your Dungeons & Dragons sessions.">
-    <meta name="keywords" content="D&D, Dungeons and Dragons, Initiative Tracker, Tabletop, Role-playing game, Resources">
-    <title>D&D Tool Assister - Home</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="nav-left">
-                <h1><a href="index.html">D&D Tool Assister</a></h1>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle Navigation">
-                <span></span>
-            </button>
-            <ul class="nav-right">
-                <li><a href="tracker.html">Initiative Tracker</a></li>
-                <li><a href="about.html">About</a></li>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Welcome to the D&amp;D Tool Assister, your one-stop solution for managing your Dungeons &amp; Dragons sessions."
+        />
+        <meta name="theme-color" content="#1a1a1a" />
+        <title>Home | D&amp;D Tool Assister</title>
+        <link rel="icon" href="favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="scripts.js" defer></script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="site-header">
+            <nav class="nav container" aria-label="Main">
+                <a class="nav__brand" href="index.html">D&amp;D Tool Assister</a>
+                <button
+                    class="nav__toggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-controls="navMenu"
+                    aria-expanded="false"
+                >
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                    <span class="nav__toggle-bar"></span>
+                </button>
+                <ul class="nav__menu" id="navMenu">
+                    <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+                    <li><a class="nav__link" href="tracker.html">Initiative Tracker</a></li>
+                    <li><a class="nav__link" href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="site-main container" id="main">
+            <section class="hero panel" aria-labelledby="hero-heading">
+                <h1 id="hero-heading">Welcome to the D&amp;D Tool Assister</h1>
+                <p class="hero__lead">
+                    Your companion for running Dungeons &amp; Dragons sessions. Whether you are a
+                    seasoned Dungeon Master or new to the role, these tools keep the game flowing
+                    smoothly and your players engaged.
+                </p>
+                <div class="hero__actions">
+                    <a class="btn btn--primary btn--lg" href="tracker.html">Start Tracking</a>
+                    <a class="btn btn--ghost btn--lg" href="about.html">Learn More</a>
+                </div>
+            </section>
+
+            <ul class="feature-grid" aria-label="How it works">
+                <li class="panel feature-card">
+                    <span class="feature-card__step" aria-hidden="true">1</span>
+                    <h2>Build your party</h2>
+                    <p>Add players, companions and monsters with their initiative bonuses.</p>
+                </li>
+                <li class="panel feature-card">
+                    <span class="feature-card__step" aria-hidden="true">2</span>
+                    <h2>Roll initiative</h2>
+                    <p>Type in table rolls or let the tracker roll a d20 for anyone left blank.</p>
+                </li>
+                <li class="panel feature-card">
+                    <span class="feature-card__step" aria-hidden="true">3</span>
+                    <h2>Run the turns</h2>
+                    <p>Step through the order turn by turn while the tracker counts the rounds.</p>
+                </li>
             </ul>
-        </nav>
-    </header>
-    <main class="home-container">
-        <section class="home-welcome-box">
-            <h2>Welcome to the D&D Tool Assister</h2>
-            <p>Your ultimate companion for managing Dungeons & Dragons sessions. Whether you are a seasoned Dungeon Master or new to the role, our tools and resources will help you keep the game flowing smoothly and keep your players engaged.</p>
-            <p>Explore our tools to manage initiative orders, and learn more about how we can assist you in creating memorable gaming experiences.</p>
-            <div class="cta-buttons">
-                <a href="tracker.html" class="cta-button">Start Tracking</a>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; 2024 D&amp;D Tool Assister. All rights reserved.</p>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 D&D Tool Assister. All rights reserved.</p>
-    </footer>
-    <script src="scripts.js"></script>
-</body>
+        </footer>
+    </body>
 </html>
